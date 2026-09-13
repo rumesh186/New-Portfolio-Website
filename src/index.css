@@ -1324,6 +1324,22 @@ a.contact-value:hover {
   }
 }
 
+@media (max-width: 768px) {
+  .chatbot-float-btn {
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .chatbot-icon-wrap {
+    width: 50px;
+    height: 50px;
+  }
+
+  .chatbot-icon-wrap i {
+    font-size: 22px;
+  }
+}
+
 /* Chatbot Popup Window */
 .chatbot-window {
   position: fixed;
