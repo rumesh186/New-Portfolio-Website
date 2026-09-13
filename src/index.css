@@ -380,6 +380,7 @@ a {
   align-items: center;
   gap: 14px;
   margin-top: 14px;
+  flex-wrap: wrap;
 }
 
 .social-icon-btn {
@@ -929,6 +930,8 @@ a {
   font-weight: 600;
   color: #ffffff;
   transition: color 0.2s ease;
+  word-break: break-word;
+  white-space: normal;
 }
 
 a.contact-value:hover {
@@ -939,6 +942,7 @@ a.contact-value:hover {
   display: flex;
   gap: 12px;
   margin-top: 10px;
+  flex-wrap: wrap;
 }
 
 .contact-form {
@@ -1089,6 +1093,10 @@ a.contact-value:hover {
 }
 
 @media (max-width: 480px) {
+  .site-footer {
+    padding-bottom: 90px;
+  }
+
   .hero-name {
     font-size: clamp(1.35rem, 5.8vw, 1.8rem);
   }
@@ -1647,5 +1655,370 @@ a.contact-value:hover {
     left: 16px;
     width: auto;
     height: 480px;
+  }
+}
+/* =========================================================
+   SCROLL REVEAL ANIMATION ENGINE
+   ========================================================= */
+
+/* ---- Base state (hidden) ---- */
+.sr {
+  will-change: opacity, transform, filter;
+  transition-property: opacity, transform, filter;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Variant: fade-up (default) */
+.sr--fade-up {
+  opacity: 0;
+  transform: translateY(50px);
+}
+.sr--fade-up.sr--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Variant: fade-down */
+.sr--fade-down {
+  opacity: 0;
+  transform: translateY(-50px);
+}
+.sr--fade-down.sr--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Variant: slide-left */
+.sr--slide-left {
+  opacity: 0;
+  transform: translateX(-70px);
+}
+.sr--slide-left.sr--visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Variant: slide-right */
+.sr--slide-right {
+  opacity: 0;
+  transform: translateX(70px);
+}
+.sr--slide-right.sr--visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Variant: scale */
+.sr--scale {
+  opacity: 0;
+  transform: scale(0.88);
+}
+.sr--scale.sr--visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Variant: blur-in */
+.sr--blur-in {
+  opacity: 0;
+  filter: blur(12px);
+  transform: translateY(20px);
+}
+.sr--blur-in.sr--visible {
+  opacity: 1;
+  filter: blur(0px);
+  transform: translateY(0);
+}
+
+/* Stagger group — no styles needed on wrapper itself */
+.sr-group {
+  width: 100%;
+}
+
+/* =========================================================
+   HERO CASCADING ENTRANCE ANIMATION
+   ========================================================= */
+.hero-anim {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-entered .hero-anim {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered delays — each line cascades in */
+.hero-entered .hero-anim--1 { transition-delay: 0ms; }
+.hero-entered .hero-anim--2 { transition-delay: 120ms; }
+.hero-entered .hero-anim--3 { transition-delay: 260ms; }
+.hero-entered .hero-anim--4 { transition-delay: 400ms; }
+.hero-entered .hero-anim--5 { transition-delay: 540ms; }
+
+/* =========================================================
+   ENHANCED NAVBAR — ACTIVE LINK GLOW
+   ========================================================= */
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2.5px;
+  background: var(--accent-orange);
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(255, 120, 0, 0.6);
+  animation: navGlowPulse 2s ease-in-out infinite;
+}
+
+@keyframes navGlowPulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(255, 120, 0, 0.6); }
+  50%      { box-shadow: 0 0 18px rgba(255, 120, 0, 0.9), 0 0 30px rgba(255, 120, 0, 0.3); }
+}
+
+/* Smooth active link color transition */
+.nav-link {
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.nav-link.active {
+  text-shadow: 0 0 20px rgba(255, 120, 0, 0.25);
+}
+
+/* =========================================================
+   SECTION DIVIDERS — ANIMATED GRADIENT LINES
+   ========================================================= */
+.about-section::before,
+.skills-section::before,
+.education-section::before,
+.work-section::before,
+.experience-section::before,
+.contact-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(85%, 600px);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 120, 0, 0.35) 30%,
+    rgba(255, 120, 0, 0.6) 50%,
+    rgba(255, 120, 0, 0.35) 70%,
+    transparent 100%
+  );
+  opacity: 0.7;
+}
+
+/* =========================================================
+   ENHANCED CARDS — PREMIUM HOVER
+   ========================================================= */
+.project-card,
+.timeline-card,
+.skill-category-card,
+.about-single-card,
+.contact-info-card,
+.contact-form-card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle gradient shimmer on hover */
+.project-card::before,
+.timeline-card::before,
+.skill-category-card::before,
+.about-single-card::before,
+.contact-info-card::before,
+.contact-form-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.03),
+    transparent
+  );
+  transition: left 0.7s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.project-card:hover::before,
+.timeline-card:hover::before,
+.skill-category-card:hover::before,
+.about-single-card:hover::before,
+.contact-info-card:hover::before,
+.contact-form-card:hover::before {
+  left: 125%;
+}
+
+.project-card:hover,
+.timeline-card:hover,
+.skill-category-card:hover,
+.about-single-card:hover,
+.contact-info-card:hover,
+.contact-form-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--card-hover-border);
+  box-shadow:
+    0 16px 36px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba(255, 120, 0, 0.06);
+}
+
+/* Ensure card children sit above the shimmer */
+.project-card > *,
+.timeline-card > *,
+.skill-category-card > *,
+.about-single-card > *,
+.contact-info-card > *,
+.contact-form-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================================================
+   SKILL BADGE MICRO-INTERACTIONS
+   ========================================================= */
+.skill-badge {
+  transition: background 0.25s ease,
+              border-color 0.25s ease,
+              transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.25s ease;
+}
+
+.skill-badge:hover {
+  background: rgba(255, 122, 0, 0.15);
+  border-color: var(--accent-orange);
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 6px 16px rgba(255, 120, 0, 0.15);
+}
+
+/* =========================================================
+   TIMELINE CARD — ENHANCED LEFT BORDER GLOW
+   ========================================================= */
+.timeline-card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease,
+              box-shadow 0.35s ease,
+              border-left-color 0.35s ease;
+}
+
+.timeline-card:hover {
+  transform: translateY(-3px);
+  border-left-color: var(--accent-orange);
+  box-shadow:
+    0 16px 36px rgba(0, 0, 0, 0.4),
+    -4px 0 20px rgba(255, 120, 0, 0.1);
+}
+
+/* =========================================================
+   PROJECT CARD — IMAGE OVERLAY ON HOVER
+   ========================================================= */
+.project-img-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 50%,
+    rgba(8, 8, 12, 0.5) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.project-card:hover .project-img-container::after {
+  opacity: 1;
+}
+
+/* =========================================================
+   BUTTON RIPPLE EFFECT
+   ========================================================= */
+.btn-about,
+.btn-download-cv,
+.btn-submit {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-about::after,
+.btn-download-cv::after,
+.btn-submit::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease, height 0.5s ease;
+}
+
+.btn-about:active::after,
+.btn-download-cv:active::after,
+.btn-submit:active::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* =========================================================
+   SOCIAL ICON HOVER GLOW RING
+   ========================================================= */
+.social-icon-btn {
+  position: relative;
+}
+
+.social-icon-btn::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon-btn:hover::before {
+  border-color: rgba(255, 120, 0, 0.4);
+  transform: scale(1.1);
+}
+
+/* =========================================================
+   CONTACT FORM INPUT — FOCUS GLOW
+   ========================================================= */
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--accent-orange);
+  box-shadow:
+    0 0 0 3px rgba(255, 122, 0, 0.18),
+    0 0 20px rgba(255, 122, 0, 0.06);
+}
+
+/* =========================================================
+   REDUCED MOTION ACCESSIBILITY
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  .sr,
+  .hero-anim {
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+
+  .glassmorphic-card::before {
+    display: none;
+  }
+
+  .nav-link.active::after {
+    animation: none;
   }
 }

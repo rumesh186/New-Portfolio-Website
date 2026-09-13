@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTypewriter } from '../hooks/useTypewriter';
 
 export default function Hero() {
+  const [entered, setEntered] = useState(false);
+
   const typedText = useTypewriter([
     '3D Modeling & Rendering',
     'Video Production',
@@ -9,22 +11,28 @@ export default function Hero() {
     'Full-Stack Development'
   ]);
 
+  useEffect(() => {
+    // Trigger entrance animation shortly after mount
+    const timer = setTimeout(() => setEntered(true), 150);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section id="home" className="section hero-section">
       <div className="hero-container">
-        <div className="hero-left-content">
-          <span className="hero-greeting">Hi There,</span>
-          <h1 className="hero-name">
+        <div className={`hero-left-content ${entered ? 'hero-entered' : ''}`}>
+          <span className="hero-greeting hero-anim hero-anim--1">Hi There,</span>
+          <h1 className="hero-name hero-anim hero-anim--2">
             I'm Rumesh <span className="name-highlight">Kaluarachchi</span>
           </h1>
 
-          <div className="hero-typing-box">
+          <div className="hero-typing-box hero-anim hero-anim--3">
             <span className="typing-prefix">I Am Into </span>
             <span className="typed-text">{typedText}</span>
             <span className="typing-cursor">|</span>
           </div>
 
-          <div className="hero-cta-box">
+          <div className="hero-cta-box hero-anim hero-anim--4">
             <a href="#about" className="btn-about">
               <span>About Me</span>
               <i className="fa-solid fa-circle-arrow-down" />
@@ -32,7 +40,7 @@ export default function Hero() {
           </div>
 
           {/* Social Media Icons Row */}
-          <div className="hero-social-links">
+          <div className="hero-social-links hero-anim hero-anim--5">
             <a href="https://www.linkedin.com/in/rumesh-kaluarachchi/" target="_blank" rel="noreferrer" className="social-icon-btn" aria-label="LinkedIn">
               <i className="fa-brands fa-linkedin-in" />
             </a>

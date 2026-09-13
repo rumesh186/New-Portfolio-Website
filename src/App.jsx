@@ -12,6 +12,7 @@ import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
 import Chatbot from './components/Chatbot';
 import { useScrollSpy } from './hooks/useScrollSpy';
+import ScrollReveal from './components/ScrollReveal';
 
 const SECTION_IDS = ['home', 'about', 'skills', 'education', 'work', 'experience', 'contact'];
 
@@ -29,12 +30,31 @@ export default function App() {
       {/* Main Content Sections */}
       <main id="main-content">
         <Hero />
-        <About />
-        <Skills />
-        <Education />
-        <Work />
-        <Experience />
-        <Contact />
+
+        <ScrollReveal variant="fade-up" delay={0}>
+          <About />
+        </ScrollReveal>
+
+        <ScrollReveal variant="scale" delay={50}>
+          <Skills />
+        </ScrollReveal>
+
+        <ScrollReveal variant="slide-left" delay={0}>
+          <Education />
+        </ScrollReveal>
+
+        <ScrollReveal variant="fade-up" delay={50}>
+          <Work />
+        </ScrollReveal>
+
+        <ScrollReveal variant="slide-right" delay={0}>
+          <Experience />
+        </ScrollReveal>
+
+        <ScrollReveal variant="blur-in" delay={50}>
+          <Contact />
+        </ScrollReveal>
+
         <Footer />
       </main>
 

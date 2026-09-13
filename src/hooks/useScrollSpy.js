@@ -10,7 +10,9 @@ export function useScrollSpy(sectionIds, offset = 200) {
       for (const id of sectionIds) {
         const el = document.getElementById(id);
         if (el) {
-          const top = el.offsetTop;
+          // Use getBoundingClientRect for accurate absolute position,
+          // avoiding issues where el.offsetTop is relative to transformed parents.
+          const top = el.getBoundingClientRect().top + window.scrollY;
           const height = el.offsetHeight;
           if (scrollY >= top && scrollY < top + height) {
             setActiveId(id);

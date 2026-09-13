@@ -22,11 +22,30 @@ export default function Navbar({ activeSection }) {
     { id: 'contact', label: 'Contact' },
   ];
 
+  const handleNavClick = (e, targetId) => {
+    e.preventDefault();
+    setMobileOpen(false);
+    const targetElement = document.getElementById(targetId);
+    
+    if (targetElement) {
+      if (window.lenis) {
+        window.lenis.scrollTo(targetElement);
+      } else {
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
     <header className={`navbar ${isScrolled ? 'scrolled' : ''}`} id="navbar">
       <div className="nav-container">
         {/* RK Monogram Vector Logo (Transparent Background) */}
-        <a href="#home" className="brand-logo" aria-label="Rumesh Kaluarachchi Home">
+        <a 
+          href="#home" 
+          className="brand-logo" 
+          aria-label="Rumesh Kaluarachchi Home"
+          onClick={(e) => handleNavClick(e, 'home')}
+        >
           <svg className="rk-logo-svg" viewBox="0 0 280 240" fill="none">
             {/* R Character */}
             <path
@@ -48,7 +67,7 @@ export default function Navbar({ activeSection }) {
               key={item.id}
               href={`#${item.id}`}
               className={`nav-link ${activeSection === item.id ? 'active' : ''}`}
-              onClick={() => setMobileOpen(false)}
+              onClick={(e) => handleNavClick(e, item.id)}
             >
               {item.label}
             </a>

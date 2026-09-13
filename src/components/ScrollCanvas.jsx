@@ -158,12 +158,22 @@ export default function ScrollCanvas() {
         infinite: false,
       });
 
+      // Expose to window for external access (e.g., from Navbar anchor links)
+      window.lenis = lenisInstance;
+
       lenisInstance.on('scroll', () => {
         updateScrollTarget();
       });
     } catch (err) {
       console.warn('Lenis init:', err);
     }
+
+    // Connect Lenis to requestAnimationFrame loop
+    function raf(time) {
+      if (lenisInstance) lenisInstance.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
 
     window.addEventListener('scroll', updateScrollTarget, { passive: true });
     window.addEventListener('resize', resizeCanvas);
