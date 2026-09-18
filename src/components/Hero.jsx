@@ -32,6 +32,10 @@ export default function Hero() {
             <span className="typing-cursor">|</span>
           </div>
 
+          {/* SEO: Hidden heading for crawlers — typewriter text is JS-rendered and invisible to bots */}
+          <h2 className="sr-only">
+            Specializing in 3D Modeling &amp; Rendering, Video Editing &amp; Production, UI/UX Design, and Full-Stack Development
+          </h2>
           <div className="hero-cta-box hero-anim hero-anim--4">
             <a href="#about" className="btn-about">
               <span>About Me</span>

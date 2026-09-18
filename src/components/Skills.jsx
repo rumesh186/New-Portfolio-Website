@@ -67,13 +67,13 @@ export default function Skills() {
                 <i className={`fa-solid ${cat.icon} skill-header-icon`} />
                 <h3>{cat.title}</h3>
               </div>
-              <div className="skill-tags">
+              <ul className="skill-tags">
                 {cat.skills.map((skill, sIdx) => (
-                  <span key={sIdx} className="skill-badge">
+                  <li key={sIdx} className="skill-badge">
                     <i className={skill.icon} /> {skill.name}
-                  </span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           ))}
         </div>

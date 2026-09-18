@@ -62,7 +62,7 @@ export default function Contact() {
             <h3>Contact Information</h3>
             <p>Feel free to reach out for project inquiries, freelance opportunities, or collaborations.</p>
 
-            <div className="contact-details-list">
+            <address className="contact-details-list">
               <div className="contact-detail-item">
                 <i className="fa-solid fa-envelope contact-icon" />
                 <div>
@@ -80,7 +80,7 @@ export default function Contact() {
                   <span className="contact-value">No - 35, Denagama East, Hakmana, Sri Lanka</span>
                 </div>
               </div>
-            </div>
+            </address>
 
             <div className="contact-social-row">
               <a href="https://www.linkedin.com/in/rumesh-kaluarachchi/" target="_blank" rel="noreferrer" className="social-icon-btn" aria-label="LinkedIn">

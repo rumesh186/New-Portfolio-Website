@@ -1,0 +1,8 @@
+# robots.txt — Rumesh Kaluarachchi Portfolio
+# Allow all crawlers to index the entire site
+
+User-agent: *
+Allow: /
+
+# Sitemap location — UPDATE domain to your actual deployed URL
+Sitemap: https://rumeshkaluarachchi.com/sitemap.xml

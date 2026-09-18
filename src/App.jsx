@@ -21,6 +21,9 @@ export default function App() {
 
   return (
     <>
+      {/* Skip to content — Accessibility & SEO */}
+      <a href="#main-content" className="skip-to-content">Skip to main content</a>
+
       {/* Background Canvas Frame Animation Layer */}
       <ScrollCanvas />
 
@@ -28,7 +31,7 @@ export default function App() {
       <Navbar activeSection={activeSection} />
 
       {/* Main Content Sections */}
-      <main id="main-content">
+      <main id="main-content" role="main">
         <Hero />
 
         <ScrollReveal variant="fade-up" delay={0}>

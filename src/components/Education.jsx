@@ -4,12 +4,14 @@ export default function Education() {
   const educationList = [
     {
       period: '2023 – 2027 | Pursuing',
+      dateTime: '2023/2027',
       title: 'Bachelor of Information and Communication Technology (Hons)',
       institution: 'University of Sri Jayewardenepura',
       desc: 'Specializing in Multimedia Technology',
     },
     {
       period: '2018 – 2021 | Completed',
+      dateTime: '2018/2021',
       title: 'GCE Advanced Level',
       institution: 'Methodist National School',
       desc: 'Technology Stream',
@@ -26,15 +28,16 @@ export default function Education() {
 
         <div className="timeline-container">
           {educationList.map((item, idx) => (
-            <div key={idx} className="timeline-card glassmorphic-card">
-              <div className="timeline-period">{item.period}</div>
+            <article key={idx} className="timeline-card glassmorphic-card">
+              <time className="timeline-period" dateTime={item.dateTime}>{item.period}</time>
               <h3 className="timeline-title">{item.title}</h3>
               <span className="timeline-institution">{item.institution}</span>
               <p className="timeline-desc">{item.desc}</p>
-            </div>
+            </article>
           ))}
         </div>
       </div>
     </section>
   );
 }
+

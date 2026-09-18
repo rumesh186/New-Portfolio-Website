@@ -12,7 +12,7 @@ export default function About() {
         </div>
 
         {/* Unified single card box containing text and photo */}
-        <div className="about-single-card glassmorphic-card">
+        <article className="about-single-card glassmorphic-card">
           <div className="about-content-col">
             <h3>Who I Am</h3>
             <p>
@@ -41,12 +41,16 @@ export default function About() {
           <div className="about-image-col">
             <img
               src="/assets/rumesh-photo.jpg"
-              alt="Rumesh Kaluarachchi"
+              alt="Rumesh Kaluarachchi — Multimedia Technology professional, 3D artist and full-stack developer from Sri Lanka"
               className="about-profile-img"
+              loading="eager"
+              width="400"
+              height="400"
             />
           </div>
-        </div>
+        </article>
       </div>
     </section>
   );
 }
+

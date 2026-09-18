@@ -2038,3 +2038,72 @@ a.contact-value:hover {
     animation: none;
   }
 }
+
+/* =========================================================
+   SEO & ACCESSIBILITY UTILITIES
+   ========================================================= */
+
+/* Skip to content — hidden until focused via keyboard */
+.skip-to-content {
+  position: fixed;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99999;
+  padding: 12px 28px;
+  background: var(--accent-orange);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 0 0 12px 12px;
+  text-decoration: none;
+  transition: top 0.25s ease;
+}
+
+.skip-to-content:focus {
+  top: 0;
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+/* Screen reader only — visually hidden but accessible to crawlers & assistive tech */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Skill tags — reset ul/li default styles after semantic change from div/span */
+ul.skill-tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.skill-tags li.skill-badge {
+  display: inline-flex;
+}
+
+/* Address element — reset browser default italic */
+address.contact-details-list {
+  font-style: normal;
+}
+
+/* =========================================================
+   FOOTER (Simple Layout with SEO Content Hidden)
+   ========================================================= */
+.site-footer {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.footer-copyright {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
