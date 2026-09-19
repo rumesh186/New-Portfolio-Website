@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function About() {
-  const resumeUrl = 'https://drive.google.com/file/d/16rVwozrTtBHONzxtDlPKa2Qbc0DX2emI/view?pli=1';
+  const resumeUrl = 'https://drive.google.com/file/d/1-KN_13NTTVY1wcoFl_07rT04M3KwWxZO/view?usp=sharing';
 
   return (
     <section id="about" className="section about-section">
